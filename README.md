@@ -1,47 +1,51 @@
-# Atividade - Aula 02 - Typescript
+# Sistema de E-commerce com Tipagem Avançada
 
-Projeto criado para a Aula 02 do Programa TIC-HUB 12 Full Stack.
+Um projeto construído para demonstrar aplicação prática de programação orientada a objetos (POO) e tipagem estrita em TypeScript. Desenvolvido como atividade da Aula 02 do Programa TIC-HUB 12 Full Stack.
 
-## Rodando o projeto
+## 🚀 Como Executar
 
-### Instalação
+### Instalação de Dependências
 
-```
+```bash
 npm install
 ```
 
-### Execução
+### Iniciar a Aplicação
 
-```
+```bash
 npm run start
 ```
 
-## Requisitos
+## 📋 Arquitetura do Projeto
 
-### Classes/Interfaces
+### Modelos de Dados Implementados
 
-As classes/interfaces devem ter
- - [x] Category: id, name.
- - [x] Product: id, name, price, category (do tipo Category).
- - [x] User: id, username, email.
- - [x] Role: Deve ser estritamente "ADMIN" ou "CUSTOMER".
+O sistema é composto pelas seguintes entidades:
 
- #### 🛒 Carrinho
+- **Category**: Representa categorias de produtos com identificadores únicos
+- **Product**: Define produtos com atributos como preço e associação a categorias
+- **User**: Gerencia usuários do sistema com autenticação via roles
+- **Role**: Sistema de permissões restrito a dois níveis (ADMIN e CUSTOMER)
 
- O carrinho deve implementar funções equivalentes a:
- - [x] getTotalItems(): Retorna a quantidade total de unidades (soma das quantidades) no carrinho.
- - [x] getFinalPrice(): Retorna o valor monetário total da compra.
+### Componente Principal: Carrinho de Compras
 
-### 🔥 Desafio
+O Cart implementa:
+- [x] **getTotalItems()**: Calcula o total de unidades em estoque na sessão do carrinho
+- [x] **getFinalPrice()**: Computa o valor bruto da compra considerando descontos aplicáveis
 
-Seção Desafio. Refatoração com High-Order Functions.
+## 💡 Desafios Avançados Implementados
 
- - [x] Método addItem(product, quantity): Utilize .some() para verificar se o produto já existe no carrinho. Se existir, apenas aumente a quantidade; se não, adicione o novo item.
- - [x] Método getTotalItems(): Substitua o laço for ou forEach pelo método .reduce().
- - [x] Método getFinalPrice(): Refatore o cálculo do valor total utilizando também o método .reduce().
+Aplicação de padrões funcionais para melhorar legibilidade e manutenibilidade:
 
-### ✅ Critérios para considerar a atividade como feita
- - [x] **Tipagem Completa**: O código não deve conter o uso de any.
- - [x] **Integridade da Role**: O sistema deve impedir (em tempo de compilação) a atribuição de papéis diferentes de ADMIN ou CUSTOMER.
- - [x] **Lógica de Acúmulo**: O carrinho deve ser capaz de somar quantidades de produtos repetidos sem duplicar as entradas no array.
- - [x] **Uso de HOF**: (Para quem optar pelo desafio) O uso de .reduce() e .some() deve estar implementado corretamente.
+- [x] **Validação com .some()**: Detecta produtos duplicados antes de inseri-los no carrinho, incrementando quantidade ao invés de criar entrada duplicada
+- [x] **Agregação com .reduce()**: A contagem total de itens utiliza reduce para processamento declarativo
+- [x] **Cálculo Monetário com .reduce()**: O processamento do preço final também aproveita reduce para somatória acumulativa
+
+## ✨ Padrões de Qualidade
+
+Critérios observados durante o desenvolvimento:
+
+- [x] **Type Safety Completa**: Nenhuma utilização de tipos `any`, garantindo segurança em tempo de compilação
+- [x] **Validação de Permissões**: O compilador TypeScript rejeita valores de role que não sejam os permitidos
+- [x] **Integridade de Quantidades**: Produtos adicionados múltiplas vezes têm suas quantidades acumuladas corretamente
+- [x] **Código Declarativo**: Implementação de high-order functions para padrões de busca e agregação
